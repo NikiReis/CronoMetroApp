@@ -66,7 +66,7 @@ export default function App() {
         </Text>
       </View>
       
-      <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", marginBottom: 230 }}>
+      <View style={{ flexDirection: "row", justifyContent: "center", alignItems: "center", bottom: 30}}>
         <TouchableOpacity
           style={styles.left_button} 
           onPress={Iniciar}
@@ -76,7 +76,8 @@ export default function App() {
         <TouchableOpacity
           style={{ backgroundColor: "blue",paddingVertical: 15,
             paddingHorizontal: 25,
-            borderRadius: 10,}}
+            borderRadius: 10,
+          }}
           onPress={Parar}
         >
           <Text style={{ color: "white", fontWeight: "bold" }}>Pausar</Text>
