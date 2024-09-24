@@ -16,19 +16,21 @@ export default function App() {
   function Iniciar() {
     if (!Intervalo) {
       const Current = setInterval(() => {
-        setMilissegundos((prevMilissegundos) => {
-          if (prevMilissegundos === 99) {
-            setSegundos((prevSegundos) => {
-              if (prevSegundos === 59) {
-                setMinutos((prevMinutos) => prevMinutos + 1);
-                return 0;
-              }
-              return prevSegundos + 1;
-            });
-            return 0;
+      setMilissegundos((prevMilissegundos) => {
+        let newMilissegundos = prevMilissegundos + 1;
+        if (newMilissegundos === 100) {
+        newMilissegundos = 0;
+        setSegundos((prevSegundos) => {
+          let newSegundos = prevSegundos + 1;
+          if (newSegundos === 60) {
+          newSegundos = 0;
+          setMinutos((prevMinutos) => prevMinutos + 1);
           }
-          return prevMilissegundos + 1;
+          return newSegundos;
         });
+        }
+        return newMilissegundos;
+      });
       }, 10); // incrementa a cada 10ms
       setIntervalo(Current);
     }
@@ -55,7 +57,7 @@ export default function App() {
   return (
     <View>
       <View style={{ alignContent: "center", justifyContent: "center", margin: "auto", marginTop: 160 }}>
-        <Text style={{ color: "black", fontWeight: "bold", fontSize: 25 }}>Cronômetro</Text>
+        <Text style={{ color: "black", fontWeight: "bold", fontSize: 35 }}>Cronômetro</Text>
       </View>
       <View style={{ marginLeft: "auto", marginRight: "auto", marginBottom: 150 }}>
         <Image source={require('./assets/circle.png')} style={{marginT:"auto", top: 70, width:350, height:350}} />
